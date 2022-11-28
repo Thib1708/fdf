@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:06:40 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/27 11:49:36 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:59:35 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_map
 	int		**tab;
 	int		length;
 	int		depth;
+	int		win_l;
+	int		win_h;
 	int		x1;
 	int		y1;
 	int		x2;
@@ -36,6 +38,7 @@ typedef struct s_map
 	void	*mlx;
 	void	*win;
 	int		color;
+	float		alt;
 }	t_map;
 
 typedef struct s_win
@@ -45,12 +48,14 @@ typedef struct s_win
 	int		fd;
 	int		color;
 	char	*file_name;
+	int		win_l;
+	int		win_h;
 }	t_win;
 
-int		ft_check_arg(int argc, char **argv);
-void	ft_read_file(char *file, t_win *param);
+int		ft_check_arg(int argc);
+int		ft_read_file(char *file, t_win *param);
 void	ft_get_map(t_win *param, t_map *map, char *file);
-void	ft_check_map(t_win *param, t_map *map);
+int		ft_check_map(t_win *param, t_map *map);
 int		ft_check_line(char **line);
 int		ft_tablen(char **tab);
 void	ft_draw_map(t_map *map);
@@ -68,7 +73,9 @@ void	segment_o7(int x1, int y1, int x2, int y2, t_map *map);
 void	segment_o8(int x1, int y1, int x2, int y2, t_map *map);
 int		hook_key(int key, t_map *map);
 void	ft_create_map(t_win *param, t_map *map);
-void	ft_free_tab(char ***tab);
+char	**ft_free_tab(char **tab);
 void	error_malloc(void);
+void	draw_line(t_map *map);
+void	new_init_map(t_map *map);
 
 #endif

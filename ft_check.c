@@ -6,13 +6,13 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 09:46:54 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/27 11:48:59 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:03:24 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void ft_check_map(t_win *param, t_map *map)
+int ft_check_map(t_win *param, t_map *map)
 {
 	char *line;
 	char **split_line;
@@ -22,23 +22,19 @@ void ft_check_map(t_win *param, t_map *map)
 		split_line = ft_split(line, " \n");
 		free(line);
 		if (ft_check_line(split_line))
-			return ;
+			return 1;
 		if(!map->length)
 			map->length = ft_tablen(split_line);
 		if (map->length != ft_tablen(split_line))
-			return (ft_putstr_fd("Toute les lignes doivent etre de meme taille.", 1));
-		ft_free_tab(&split_line);
+			return (ft_putstr_fd("Error : diferent line's length", 1), 0);
 		map->depth++;
 	}
 	close(param->fd);
-	map->offset_x = round(1300/((map->length + map->depth - 2) * 0.82));
-	map->offset_y = round(1300/((map->length + map->depth - 2) * 0.82));
-	map->start_x = 550;
-	map->start_x++;
-	map->start_y = 10;
+	new_init_map(map);
 	map->tab = malloc(sizeof(int *) * map->depth);
-	if(map->tab)
-		error_malloc();
+	if(!map->tab)
+		return (ft_putstr_fd("Error : malloc", 1), 0);
+	return (0);
 }
 
 int	ft_check_line(char **line)
@@ -56,7 +52,7 @@ int	ft_check_line(char **line)
 				j++;
 			else
 			{
-				ft_putstr("Fichier non valide : caractere non numerique");
+				ft_putstr("Error : unvalid file");
 				return (1);
 			}
 		}
@@ -65,24 +61,25 @@ int	ft_check_line(char **line)
 	return (0);
 }
 
-void	ft_read_file(char *file, t_win *param)
+int	ft_read_file(char *file, t_win *param)
 {
 	param->fd = open(file, O_RDONLY);
 	if (param->fd < 0)
 	{
-		ft_putstr("Le fichier ne peut pas etre lu.");
-		exit(1);
+		ft_putstr("Error : file can't be read");
+		return (0);
 	}
+	return (1);
 }
 
-int ft_check_arg(int argc, char **argv)
+int ft_check_arg(int argc)
 {
 	if (argc != 2)
 	{
 		if (argc < 2)
-			ft_putstr("Veuillez rentrer une map.");
+			ft_putstr("Error : you had to enter a amp");
 		if (argc > 2)
-			ft_putstr("Veuillez n'entrer qu'une map.");
+			ft_putstr("Error : you had to enter only one map");
 		return (1);
 	}
 	return (0);

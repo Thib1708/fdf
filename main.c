@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main2.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:04:49 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/27 11:41:27 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/11/28 19:31:26 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void ft_fill_map(char *line, t_map *map, int i)
 	while(split_line[j])
 	{
 		map->tab[i][j] = ft_atoi(split_line[j]);
+		free(split_line[j]);
 		j++;
 	}
+	free(split_line);
 }
 
 void ft_get_map(t_win *param, t_map *map, char *file)
@@ -39,7 +41,6 @@ void ft_get_map(t_win *param, t_map *map, char *file)
 	while(get_next_line(param->fd, &line))
 	{
 		ft_fill_map(line, map, i);
-		free(line);
 		i++;
 	}
 }
@@ -50,13 +51,14 @@ t_map	*init_map(void)
 
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return (NULL);
+		return (ft_putstr_fd("Error : malloc", 1), NULL);
 	map->length = 0;
 	map->depth = 0;
 	map->offset_x = 0;
 	map->offset_y = 0;
 	map->start_x = 0;
 	map->start_y = 0;
+	map->alt = 1;
 	return (map);
 }
 
@@ -69,8 +71,12 @@ t_win		*init_param(char *file_name)
 	if (!win_name)
 		return (NULL);
 	param = (t_win *)malloc(sizeof(t_win));
+	if (!param)
+		return (ft_putstr_fd("Error : malloc", 1), NULL);
 	param->mlx = mlx_init();
-	param->win = mlx_new_window(param->mlx, 1300, 800, win_name);
+	param->win_l = 1080;
+	param->win_h = 1920;
+	param->win = mlx_new_window(param->mlx, param->win_l, param->win_h, win_name);
 	param->color = 0xFFFFFF;
 	return (param);
 }
@@ -79,9 +85,8 @@ int main(int argc, char **argv)
 {
 	t_win *param;
 	t_map *map;
-	
-	int i = 0, j = 0;
-	if (ft_check_arg(argc, argv))
+
+	if (ft_check_arg(argc))
 		return (1);
 	map = init_map();
 	if (!map)
@@ -89,7 +94,10 @@ int main(int argc, char **argv)
 	param = init_param(argv[1]);
 	if (!param)
 		return (1);
-	ft_read_file(argv[1], param);
+	if (!ft_read_file(argv[1], param))
+		return (1);
+	map->win_l = param->win_l;
+	map->win_h = param->win_h;
 	ft_check_map(param, map);
 	ft_get_map(param, map, argv[1]);
 	ft_create_map(param, map);

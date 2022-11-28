@@ -6,23 +6,46 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/11/26 20:13:20 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/11/28 13:39:09 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-INCLUDES = -I ./
+SRCS	=	main.c 			\
+			ft_check.c 		\
+			ft_create_map.c \
+			draw_line_1.c 	\
+			draw_line_2.c 	\
+			utils.c 		\
+			error.c 		\
 
-1: Makefile
+NAME		= fdf
+
+OBJS		= ${SRCS:.c=.o}
+
+INCLUDES = -I .
+
+HEADER 	= fdf.h
+
+FLAGS = -Wall -Wextra -Werror
+
+%.o : %.c ${HEADER}
+	cc ${FLAGS} ${INCLUDES} -c $< -o $@ 
+
+${NAME}: ${OBJS}
 		${MAKE} -C ./mlx
 		${MAKE} -C ./libft
-		cc -g3 main.c -I . -L ./mlx -lmlx -L ./libft -lft -framework OpenGL -framework Appkit
+		cc ${FLAGS} ${OBJS} -L ./mlx -lmlx -L ./libft -lft -framework OpenGL -framework Appkit -o ${NAME}
 
-2: Makefile
-		${MAKE} -C ./mlx
-		${MAKE} -C ./libft
-		cc -g3 main2.c utils.c ft_check.c draw_line.c ft_create_map.c -L ./mlx -lmlx -L ./libft -lft -framework OpenGL -framework Appkit
 
-3: Makefile
-		${MAKE} -C ./mlx
-		${MAKE} -C ./libft
-		cc -g3 main3.c utils.c -I . -L ./mlx -lmlx -L ./libft -lft -framework OpenGL -framework Appkit
+
+all:		${NAME}
+
+clean:
+			rm -f ${OBJS}
+
+fclean:		clean
+			rm -f ${NAME}
+
+re:			fclean all
+
+.PHONY: all clean fclean re
