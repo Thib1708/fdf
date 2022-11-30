@@ -6,46 +6,53 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/11/28 13:39:09 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/11/30 12:47:45 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	main.c 			\
-			ft_check.c 		\
-			ft_create_map.c \
-			draw_line_1.c 	\
-			draw_line_2.c 	\
-			utils.c 		\
-			error.c 		\
-
 NAME		= fdf
 
+FLAGS		= -Wall -Wextra -Werror
+
+CC 			= cc
+
+FRAMWORK 	= -framework OpenGL -framework Appkit
+
+INCLUDES 	= -I .
+
+HEADER		= fdf.h
+
+MLX 		= -L ./mlx -lmlx
+
+LIBFT 		= -L ./libft -lft 
+
+SRCS		=	srcs/main.c 			\
+				srcs/ft_check.c 		\
+				srcs/ft_create_map.c	\
+				srcs/utils.c 			\
+				srcs/parsing.c			\
+				srcs/hook.c				\
+				
 OBJS		= ${SRCS:.c=.o}
 
-INCLUDES = -I .
+%.o 		: %.c ${HEADER} Makefile
+				${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
 
-HEADER 	= fdf.h
-
-FLAGS = -Wall -Wextra -Werror
-
-%.o : %.c ${HEADER}
-	cc ${FLAGS} ${INCLUDES} -c $< -o $@ 
-
-${NAME}: ${OBJS}
-		${MAKE} -C ./mlx
-		${MAKE} -C ./libft
-		cc ${FLAGS} ${OBJS} -L ./mlx -lmlx -L ./libft -lft -framework OpenGL -framework Appkit -o ${NAME}
+${NAME}		: ${OBJS}
+				${MAKE} -C ./mlx
+				${MAKE} -C ./libft
+				${CC} ${FLAGS} ${OBJS} ${LIBFT} $(MLX) ${FRAMWORK} -o ${NAME}
 
 
 
-all:		${NAME}
+all			: ${NAME}
 
-clean:
-			rm -f ${OBJS}
+clean		:
+				rm -f ${OBJS}
 
-fclean:		clean
-			rm -f ${NAME}
+fclean		: clean
+				rm -f ${NAME}
 
-re:			fclean all
+re			: fclean all
 
-.PHONY: all clean fclean re
+.PHONY		: all clean fclean re
