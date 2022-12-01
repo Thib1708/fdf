@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 20:46:25 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/01 13:19:13 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:28:19 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	ft_print_controls(t_map *m)
 	mlx_string_put(m->mlx, m->win, 10, 25, 0xFFFFFF, "+ / -: zoom");
 	mlx_string_put(m->mlx, m->win, 10, 45, \
 	0xFFFFFF, "Scroll wheel: increase / decrease height");
-	mlx_string_put(m->mlx, m->win, 10, 65, 0xFFFFFF, "  r  : reset");
+	mlx_string_put(m->mlx, m->win, 10, 65, 0xFFFFFF, " ESC : close");
+	mlx_string_put(m->mlx, m->win, 10, 85, 0xFFFFFF, "  r  : reset");
 }
 
 char	**ft_free_tab(char **tab)
 {
 	while (*tab)
 		free(*tab++);
-	//free(tab);
 	return (NULL);
 }
 
