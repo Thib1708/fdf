@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 20:46:25 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/01 09:59:56 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:19:13 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_color(t_map *m, int x2, int y2)
 		m->color = 0x623509;
 	else if (m->tab[m->y][m->x] > 40 || m->tab[y2][x2] > 40)
 		m->color = 0xB0855A;
-	else if (m->tab[m->y][m->x] > 10 || m->tab[y2][x2] > 10)
+	else if (m->tab[m->y][m->x] > 23 || m->tab[y2][x2] > 23)
 		m->color = 0xAC7339;
 	else if (m->tab[m->y][m->x] > 0 || m->tab[y2][x2] > 0)
 		m->color = 0x6AA84F;
@@ -35,7 +35,7 @@ void	ft_print_controls(t_map *m)
 	mlx_string_put(m->mlx, m->win, 10, 5, 0xFFFFFF, "Arrow: move map");
 	mlx_string_put(m->mlx, m->win, 10, 25, 0xFFFFFF, "+ / -: zoom");
 	mlx_string_put(m->mlx, m->win, 10, 45, \
-	0xFFFFFF, "m / n: increase / decrease height");
+	0xFFFFFF, "Scroll wheel: increase / decrease height");
 	mlx_string_put(m->mlx, m->win, 10, 65, 0xFFFFFF, "  r  : reset");
 }
 

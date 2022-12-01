@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 10:55:34 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/01 09:58:28 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:21:42 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_draw_line(t_map *map)
 	while (eps--)
 	{
 		if ((int)y * map->win_l + (int)x < map->win_l * map->win_h
-			&& x < map->win_l && x > 0)
+			&& x < map->win_l && x > 0 && y > 0 && y < map->win_h)
 			map->img.data[(int)y * 2570 + (int)x] = map->color;
 		x += dx;
 		y += dy;

@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/11/30 12:47:45 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/01 13:24:08 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,11 @@ CC 			= cc
 
 FRAMWORK 	= -framework OpenGL -framework Appkit
 
-INCLUDES 	= -I .
+HEADER_PATH	= include/
 
-HEADER		= fdf.h
+HEADER		= ${HEADER_PATH}fdf.h
+
+INCLUDES 	= -I ${HEADER_PATH}
 
 MLX 		= -L ./mlx -lmlx
 
@@ -51,6 +53,8 @@ clean		:
 				rm -f ${OBJS}
 
 fclean		: clean
+				${MAKE} clean -C ./mlx
+				${MAKE} fclean -C ./libft
 				rm -f ${NAME}
 
 re			: fclean all

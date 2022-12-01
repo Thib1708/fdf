@@ -6,18 +6,18 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:06:40 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/01 10:06:58 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:53:24 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "mlx/mlx.h"
+# include "../mlx/mlx.h"
+# include "../libft/headers/get_next_line.h"
+# include "../libft/headers/ft_printf.h"
+# include "../libft/headers/libft.h"
 # include <unistd.h>
-# include "libft/headers/get_next_line.h"
-# include "libft/headers/ft_printf.h"
-# include "libft/headers/libft.h"
 # include <math.h>
 
 typedef struct s_img
