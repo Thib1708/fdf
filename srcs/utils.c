@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 20:46:25 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/30 12:57:20 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:59:56 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	**ft_free_tab(char **tab)
 {
 	while (*tab)
 		free(*tab++);
+	//free(tab);
 	return (NULL);
 }
 

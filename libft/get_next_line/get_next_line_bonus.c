@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:17:18 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/25 09:54:16 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:40:02 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*read_buf(char *save, int fd)
 	char	*buffer;
 	int		size;
 
-	buffer = calloc(BUFFER_SIZE + 1, sizeof(char));
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
 	size = 1;

@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:06:40 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/30 13:11:47 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:06:58 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_fill_map(char *line, t_map *m, int i);
 /*************************CHECK**************************/
 int		ft_check_map(t_win *w, t_map *m);
 int		ft_check_line(char **line);
-int		ft_check_file(char *file, t_win *w);
+int		ft_check_file(char *file);
 int		ft_check_arg(int argc);
 
 /************************CREATE*MAP**********************/
@@ -82,6 +82,7 @@ void	ft_create_map(t_win *w, t_map *m);
 
 /*************************HOOKS**************************/
 int		hook_key(int key, t_map *m);
+int		hook_mouse(int button, int x, int y, t_map *map);
 void	move_offset(t_map *m, int i);
 int		ft_exit(t_map *m);
 

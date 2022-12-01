@@ -6,12 +6,11 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:23:21 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/30 12:38:31 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:48:02 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 void	ft_fill_map(char *line, t_map *map, int i)
 {
@@ -37,7 +36,8 @@ void	ft_pars_map(t_win *param, t_map *map, char *file)
 	int		i;
 
 	i = 0;
-	ft_check_map(param, map);
+	if (ft_check_map(param, map))
+		exit(1);
 	param->fd = open(file, O_RDONLY);
 	while (get_next_line(param->fd, &line))
 	{

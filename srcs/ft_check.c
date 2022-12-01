@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 09:46:54 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/30 12:32:10 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:52:03 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int	ft_check_map(t_win *param, t_map *map)
 		if (!map->length)
 			map->length = ft_tablen(split_line);
 		if (map->length != ft_tablen(split_line))
-			return (ft_putstr_fd("Error : diferent line's length", 1), 0);
+		{
+			ft_free_tab(split_line);
+			free(split_line);
+			return (ft_putstr_fd("Error : diferent line's length", 1), 1);
+		}
 		map->depth++;
 		ft_free_tab(split_line);
 		free(split_line);
@@ -33,7 +37,7 @@ int	ft_check_map(t_win *param, t_map *map)
 	new_param_map(map);
 	map->tab = malloc(sizeof(int *) * map->depth);
 	if (!map->tab)
-		return (ft_putstr_fd("Error : malloc", 1), 0);
+		return (ft_putstr_fd("Error : malloc", 1), 1);
 	return (0);
 }
 
@@ -61,12 +65,14 @@ int	ft_check_line(char **line)
 	return (0);
 }
 
-int	ft_check_file(char *file, t_win *param)
+int	ft_check_file(char *file)
 {
-	param->fd = open(file, O_RDONLY);
-	if (param->fd < 0)
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
 	{
-		ft_putstr("Error : file can't be read");
+		ft_putendl_fd("Error : file can't be read", 1);
 		return (0);
 	}
 	return (1);
@@ -80,7 +86,7 @@ int	ft_check_arg(int argc)
 			ft_putstr("Error : you had to enter a map");
 		if (argc > 2)
 			ft_putstr("Error : you had to enter only one map");
-		return (1);
+		return (0);
 	}
-	return (0);
+	return (1);
 }

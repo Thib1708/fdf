@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 10:55:34 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/30 13:04:34 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:58:28 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_draw_line(t_map *map)
 	while (eps--)
 	{
 		if ((int)y * map->win_l + (int)x < map->win_l * map->win_h
-			&& x < 2570 && x > 0)
+			&& x < map->win_l && x > 0)
 			map->img.data[(int)y * 2570 + (int)x] = map->color;
 		x += dx;
 		y += dy;
@@ -94,5 +94,6 @@ void	ft_create_map(t_win *w, t_map *m)
 	m->win = w->win;
 	ft_draw_map(m);
 	mlx_key_hook(m->win, hook_key, m);
+	mlx_mouse_hook(m->win, hook_mouse, m);
 	mlx_hook(m->win, 17, 0, ft_exit, m);
 }
