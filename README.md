@@ -14,7 +14,6 @@ Copy the command line and execute it in your consol.
 Use the "make" command to compile the project then execute the new file created called "fdf" with a map.
 
 ```make; ./fdf test_map/42.fdf```
-![Alt text]([/Users/thibaultgiraudon/Desktop/img.jpg?raw=true "Title"](https://lh5.googleusercontent.com/sQOUM1SIdgLqNdRSpSHQy8Plkb_C00ojLzl7TW3maHfRCbJOHzhvbeDDPOvpvi7yNOMF32B9uJimTx3_a2uS_PsS13hDdvx_POtQgnNRw56v5wLUsM9v6UXttnRSZND6VxapPd5-jAtDYmRXFy520ll9IHqvC64VDQ9UbdYnWPqpblcI_Zfq7YHlgU9IBTeq=w1280))
 
 ## How it work 
 
