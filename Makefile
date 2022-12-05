@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/12/01 13:24:08 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/05 17:08:46 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,24 +38,24 @@ SRCS		=	srcs/main.c 			\
 OBJS		= ${SRCS:.c=.o}
 
 %.o 		: %.c ${HEADER} Makefile
-				${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
+				@${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
 
 ${NAME}		: ${OBJS}
-				${MAKE} -C ./mlx
-				${MAKE} -C ./libft
-				${CC} ${FLAGS} ${OBJS} ${LIBFT} $(MLX) ${FRAMWORK} -o ${NAME}
-
-
+				@${MAKE} -C ./mlx
+				@${MAKE} -C ./libft
+				@${CC} ${OBJS} ${LIBFT} $(MLX) ${FRAMWORK} -o ${NAME}
+				${info The project compiled well}
 
 all			: ${NAME}
 
 clean		:
-				rm -f ${OBJS}
+				@rm -f ${OBJS}
+				${info All object files have been deleted}
 
 fclean		: clean
-				${MAKE} clean -C ./mlx
-				${MAKE} fclean -C ./libft
-				rm -f ${NAME}
+				@${MAKE} fclean -C ./libft
+				@rm -f ${NAME}
+				${info ${NAME} has been deleted}
 
 re			: fclean all
 

@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:53:06 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/11/25 09:59:59 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/05 17:03:20 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,18 +81,18 @@ HEADERS =	${HEADERS_PATH}ft_printf.h \
 FLAGS = -Wall -Wextra -Werror
 
 %.o : %.c ${HEADERS} Makefile
-	cc ${FLAGS} ${INCLUDES} -c $< -o $@
+	@cc ${FLAGS} ${INCLUDES} -c $< -o $@
 
 ${NAME}:	${OBJS}
-			ar rc ${NAME} ${OBJS}
+			@ar rc ${NAME} ${OBJS}
 
 all:		${NAME}
 
 clean:
-			rm -f ${OBJS} ${OBJS_BONUS}
+			@rm -f ${OBJS} ${OBJS_BONUS}
 
 fclean:		clean
-			rm -f ${NAME}
+			@rm -f ${NAME}
 
 re:			fclean all
 
