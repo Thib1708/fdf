@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:41:05 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/02 10:21:23 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:51:05 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	hook_mouse(int button, int x, int y, t_map *map)
 {
 	if (x > 0 && x < map->win_l && y > 0 && y < map->win_h)
 	{
-	if (button == 5)
-		map->alt += 0.1;
-	if (button == 4)
-		map->alt -= 0.1;
+		if (button == 5)
+			map->alt += 0.1;
+		if (button == 4)
+			map->alt -= 0.1;
 	}
 	mlx_destroy_image(map->mlx, map->img.img_ptr);
 	ft_draw_map(map);
@@ -71,7 +71,6 @@ int	ft_exit(t_map *map)
 	}
 	mlx_destroy_window(map->mlx, map->win);
 	free(map->tab);
-	free(map);
 	exit(0);
 	return (0);
 }

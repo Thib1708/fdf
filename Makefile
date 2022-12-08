@@ -6,7 +6,7 @@
 #    By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 11:12:25 by tgiraudo          #+#    #+#              #
-#    Updated: 2022/12/05 17:08:46 by tgiraudo         ###   ########.fr        #
+#    Updated: 2022/12/06 13:38:28 by tgiraudo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,9 @@ OBJS		= ${SRCS:.c=.o}
 				@${CC} ${FLAGS} ${INCLUDES} -c $< -o $@ 
 
 ${NAME}		: ${OBJS}
-				@${MAKE} -C ./mlx
+				${MAKE} -C ./mlx
 				@${MAKE} -C ./libft
-				@${CC} ${OBJS} ${LIBFT} $(MLX) ${FRAMWORK} -o ${NAME}
-				${info The project compiled well}
+				@${CC} ${OBJS} ${LIBFT} ${MLX} ${FRAMWORK} -o ${NAME}
 
 all			: ${NAME}
 
@@ -54,6 +53,7 @@ clean		:
 
 fclean		: clean
 				@${MAKE} fclean -C ./libft
+				@${MAKE} clean -C ./mlx
 				@rm -f ${NAME}
 				${info ${NAME} has been deleted}
 

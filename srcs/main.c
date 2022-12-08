@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:04:49 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/12/01 15:09:37 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:57:30 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ t_win	*init_win(char *file_name)
 	if (!w)
 		return (ft_putstr_fd("Error : malloc", 1), NULL);
 	w->mlx = mlx_init();
-	w->win_l = 1080;
-	w->win_h = 720;
+	w->win_l = 2570;
+	w->win_h = 1440;
 	w->win = mlx_new_window(w->mlx, w->win_l, w->win_h, win_name);
 	free(win_name);
 	w->color = 0xFFFFFF;
