@@ -15,6 +15,8 @@ Use the "make" command to compile the project then execute the new file created 
 
 ```make; ./fdf test_map/42.fdf```
 
+![alt text](https://github.com/Thib1708/fdf/master/asset/42test.png?raw=true)
+
 ## How it work 
 
 ### Pars the file
