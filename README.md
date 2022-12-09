@@ -25,7 +25,9 @@ First I get a line with get_next_line then with ft_split I retrive only the numb
 I put all these value into an 2D array.
 
 ### Isometric perspective
-To convert 3D coordonate into 2D coordonate I use a formula found on the french isometric perspective's wikipedia page.
+To convert 3D coordonate into 2D coordonate I use this formula :
+
+![alt text](https://github.com/Thib1708/fdf/blob/main/assets/formula.png?raw=true)
 
 ### MinilibX
 Thanks to the mlx (minilibX) I can create a window, an image and display color pixel on it.
