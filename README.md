@@ -19,16 +19,12 @@ Use the "make" command to compile the project then execute the new file created 
 
 ## How it work 
 
+Fdf work with an map given as argument such as : //LINK TO MAP
+First, we need to pars this file in a 2D array, then transform a point a(x,y,z) in 3D space to a point b(x,y) in 2D space and finaly draw line between those points.
+
 ### Pars the file
-The subject advice you to use your get_next_line and split functions. Thats what I do.
-First I get a line with get_next_line then with ft_split I retrive only the number and with the atoi function I transform all strings into integer.
-I put all these value into an 2D array.
+I parsed the file a first time to get the leght and the heigh of the map and check if the are only integer and all the lie have the same leght.
+I parsed the file a second time to saved each line one by one in the 2D array allocated to the right size.
 
-### Isometric perspective
-To convert 3D coordonate into 2D coordonate I use this formula :
-
-![alt text](https://github.com/Thib1708/fdf/blob/main/assets/formula.png?raw=true)
-
-### MinilibX
-Thanks to the mlx (minilibX) I can create a window, an image and display color pixel on it.
-Using the bresenham algorithm I learn to draw a line from a point A to B. 
+### Transform point and draw line
+I've decided to draw line one by one from the current to the closer one below and the one on the rigth.
