@@ -19,7 +19,8 @@ Use the "make" command to compile the project then execute the new file created 
 
 ## How it work 
 
-Fdf work with an map given as argument such as : //LINK TO MAP
+Fdf work with an map given as argument such as : [map](https://github.com/Thib1708/fdf/blob/main/test_maps/42.fdf)
+
 First, we need to pars this file in a 2D array, then transform a point a(x,y,z) in 3D space to a point b(x,y) in 2D space and finaly draw line between those points.
 
 ### Pars the file
