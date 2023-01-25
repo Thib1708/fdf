@@ -27,4 +27,5 @@ I parsed the file a first time to get the leght and the heigh of the map and che
 I parsed the file a second time to saved each line one by one in the 2D array allocated to the right size.
 
 ### Transform point and draw line
-I've decided to draw line one by one from the current to the closer one below and the one on the rigth.
+I've decided to draw line one by one from the current point to the closer one below and the one on the rigth.
+I transform the two point in isometric save the new value in a struct and then draw the line.
